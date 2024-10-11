@@ -57,10 +57,16 @@ if (snapshot.data!.contains(ConnectivityResult.mobile) ||
             );
           }
 ```
-
+<div align ="center">
+  
 <img src ="https://github.com/user-attachments/assets/3149d8ae-3081-4ea0-965f-e17d0f804cc3" height=65% width=22%>
-<img src="https://github.com/user-attachments/assets/acf72e3a-3e47-47b8-9212-a0363e8ff7fe" height=65% width=22%>
+
+<img src="https://github.com/user-attachments/assets/acf72e3a-3e47-47b8-9212-a0363e8ff7fe" height=65% width=22%>  
 
 https://github.com/user-attachments/assets/14ce1321-1d52-4b94-a3e5-aebb31d6306b
+  
+</div>
+
+
 
 
