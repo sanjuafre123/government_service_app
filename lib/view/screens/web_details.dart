@@ -7,11 +7,11 @@ class WebDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.account_circle_outlined),
+        leading: Icon(Icons.account_circle_outlined,color: Colors.white,),
         toolbarHeight: 40,
         backgroundColor: Colors.black12,
         centerTitle: true,
-        title: Text('Shopping hub'),
+        title: Text('Shopping hub',style: TextStyle(color: Colors.white),),
       ),
       backgroundColor: Colors.black26,
       body: SingleChildScrollView(
@@ -24,15 +24,17 @@ class WebDetails extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.only(left: 15,top: 10,bottom: 10,right: 15),
               child: TextField(
+                style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   hintText: 'Search',
-                    suffixIcon: Icon(Icons.search,color: Colors.black,),
+                    hintStyle: TextStyle(color: Colors.white),
+                    suffixIcon: Icon(Icons.search,color: Colors.white,),
                     border: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black,width: 1,style: BorderStyle.solid),
                       borderRadius: BorderRadius.all(Radius.circular(10,),),
                     ),
                 ),
-                cursorColor: Colors.black,
+                cursorColor: Colors.white,
               ),
             ),
             const SizedBox(height: 15,),

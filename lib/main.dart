@@ -16,7 +16,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/' : (context) => const SearchEngineScreen(),
+        '/' : (context) => const OnlineOfflineScreen(),
+        '/web' : (context) =>  MyWebView(),
+
       },
     );
   }

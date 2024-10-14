@@ -1,70 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
-class SearchEngineScreen extends StatefulWidget {
-  const SearchEngineScreen({super.key});
+class SearchScreen extends StatelessWidget {
+  const SearchScreen({super.key});
 
   @override
-  State<SearchEngineScreen> createState() => _SearchEngineScreenState();
-}
-class _SearchEngineScreenState extends State<SearchEngineScreen> {
-  @override
   Widget build(BuildContext context) {
-    InAppWebViewController? inAppWebViewController;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: const Color(0xff1E1F22),
       appBar: AppBar(
-        backgroundColor: const Color(0xff1E1F22),
-        centerTitle: true,
-        leading: const Icon(Icons.account_circle,color: Colors.white,),
-        title: const Text('Search Engine',style: TextStyle(color: Colors.white),),
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(50),
-          child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 10,),
-            child: TextField(
-              cursorColor: Colors.white,
-              onSubmitted: (value) {
-                if (value.isNotEmpty) {
-                  inAppWebViewController?.loadUrl(
+        backgroundColor: Colors.white,
+        toolbarHeight: 100,
+        title: TextField(
+          controller: txtSearch,
+          decoration: InputDecoration(
+            prefixIcon: Icon(Icons.search),
+            label: Text('Search'),
+            suffixIcon: GestureDetector(
+              onTap: () {
+                inAppWebViewController.loadUrl(
                     urlRequest: URLRequest(
-                      url: WebUri('https://www.google.com/search?q=$value'),
-                    ),
-                  );
-                }
+                        url: WebUri(
+                            '${url}/search?q=${txtSearch.text}&sca_esv=453cf80c9d34ac6b&sca_upv=1&rlz=1C1CHBD_enIN1099IN1101&sxsrf=ADLYWILO4ZE1r6P0Ha8wvoqAglAm7r1t5A%3A1716482160781&ei=cHBPZpCsL93V1e8PtZ-C2AM&ved=0ahUKEwiQpNOrmqSGAxXdavUHHbWPADsQ4dUDCBE&uact=5&oq=flutter&gs_lp=Egxnd3Mtd2l6LXNlcnAiB2ZsdXR0ZXIyChAjGIAEGCcYigUyChAjGIAEGCcYigUyBBAjGCcyChAAGIAEGEMYigUyCxAAGIAEGLEDGIMBMggQABiABBixAzILEAAYgAQYsQMYgwEyCxAAGIAEGLEDGIoFMgsQABiABBixAxiDATIIEAAYgAQYsQNIphZQ5wpYnRJwAngBkAEBmAGmAqABug6qAQYwLjEyLjG4AQPIAQD4AQGYAgSgAskCwgIKEAAYsAMY1gQYR8ICDRAAGIAEGLADGEMYigXCAgUQABiABJgDAIgGAZAGCpIHAzIuMqAHgnM&sclient=gws-wiz-serp')));
               },
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.search),
-                labelText: 'Search',
-                labelStyle: const TextStyle(color: Colors.white),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(color: Colors.black),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    color: Colors.white,
-                    width: 1.5,
-                  ),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
+              child: Icon(Icons.search),
+            ),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
             ),
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 10),
-        child: InAppWebView(
-          initialUrlRequest: URLRequest(
-            url: WebUri('https://www.google.com'),
-          ),
-          onWebViewCreated: (controller) {
-            inAppWebViewController = controller;
-          },
+      body: InAppWebView(
+        initialUrlRequest: URLRequest(
+          url: WebUri('https://www.google.com'),
+
         ),
+        onWebViewCreated: (controller) {
+          inAppWebViewController = controller;
+        },
       ),
     );
   }
 }
+
+late InAppWebViewController inAppWebViewController;
+
+WebUri url = WebUri('https://www.google.com');
+
+TextEditingController txtSearch = TextEditingController();
+
+PullToRefreshController pullToRefreshController = PullToRefreshController(
+  onRefresh: () {
+    inAppWebViewController.reload();
+  },
+);

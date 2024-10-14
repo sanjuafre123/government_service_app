@@ -15,7 +15,7 @@ class OnlineOfflineScreen extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.data!.contains(ConnectivityResult.mobile) ||
               snapshot.data!.contains(ConnectivityResult.wifi)) {
-            return const SearchEngineScreen();
+            return const WebDetails();
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
