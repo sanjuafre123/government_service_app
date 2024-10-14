@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:government_service_app/view/screens/web_details.dart';
 
+class MyWebView extends StatelessWidget {
+  final String source;
 
-class WebPage extends StatelessWidget {
-  const WebPage({super.key});
+  const MyWebView({super.key, required this.source});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: InAppWebView(
-          initialUrlRequest: URLRequest(url: WebUri(url)),
+    return SafeArea(
+      child: InAppWebView(
+        initialUrlRequest: URLRequest(
+          url: WebUri(source),
         ),
       ),
     );

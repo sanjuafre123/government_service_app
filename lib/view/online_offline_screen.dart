@@ -1,6 +1,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:government_service_app/view/screens/web_details.dart';
+import 'package:government_service_app/view/search_screen/search_screen.dart';
 
 class OnlineOfflineScreen extends StatelessWidget {
   const OnlineOfflineScreen({super.key});
@@ -14,7 +15,7 @@ class OnlineOfflineScreen extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.data!.contains(ConnectivityResult.mobile) ||
               snapshot.data!.contains(ConnectivityResult.wifi)) {
-            return const WebDetails();
+            return const SearchEngineScreen();
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

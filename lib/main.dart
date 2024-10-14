@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:government_service_app/view/online_offline_screen.dart';
 import 'package:government_service_app/view/screens/web_details.dart';
 import 'package:government_service_app/view/screens/web_page.dart';
+import 'package:government_service_app/view/search_screen/search_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,8 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/' : (context) => const OnlineOfflineScreen(),
-        '/web' : (context) => const WebPage(),
+        '/' : (context) => const SearchEngineScreen(),
       },
     );
   }
