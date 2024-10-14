@@ -1,5 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:government_service_app/view/screens/web_details.dart';
 
 class OnlineOfflineScreen extends StatelessWidget {
   const OnlineOfflineScreen({super.key});
@@ -13,6 +14,7 @@ class OnlineOfflineScreen extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.data!.contains(ConnectivityResult.mobile) ||
               snapshot.data!.contains(ConnectivityResult.wifi)) {
+            return const WebDetails();
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -57,9 +59,6 @@ class OnlineOfflineScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 18,
                     ),
-                  ),
-                  const SizedBox(
-                    height: 20,
                   ),
                 ],
               ),
